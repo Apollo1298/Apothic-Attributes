@@ -1,3 +1,8 @@
+## 4.0.0
+* Ported to Minecraft / NeoForge 26.2.
+* Updated to Placebo 11.0.0.
+* Updated Curios to 16.0.0+26.2.
+
 ## 3.0.1
 * Updated to handle a recent Neo BC (`getNewDamage` -> `getHealthDamage`).
 

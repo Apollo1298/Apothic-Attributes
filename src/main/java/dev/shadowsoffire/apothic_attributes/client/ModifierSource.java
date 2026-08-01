@@ -5,8 +5,8 @@ import java.util.Comparator;
 import dev.shadowsoffire.apothic_attributes.util.Comparators;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.Hud;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -84,7 +84,7 @@ public abstract class ModifierSource<T> implements Comparable<ModifierSource<T>>
         @Override
         public void render(GuiGraphicsExtractor gfx, Font font, int x, int y) {
             Holder<MobEffect> effect = this.data.getEffect();
-            Identifier sprite = Gui.getMobEffectSprite(effect);
+            Identifier sprite = Hud.getMobEffectSprite(effect);
             float scale = 0.5F;
             var pose = gfx.pose();
             pose.pushMatrix();

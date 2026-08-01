@@ -28,6 +28,7 @@ import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.locale.Language;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
@@ -111,7 +112,7 @@ public class AttributesLibClient {
         }
 
         String key = effect.value().getDescriptionId() + ".desc";
-        if (I18n.exists(key)) {
+        if (Language.getInstance().has(key)) {
             tooltips.add(Component.translatable(key).withStyle(ChatFormatting.DARK_GRAY));
         }
         else if (ApothicAttributes.getTooltipFlag().isAdvanced() && effect.value().attributeModifiers.isEmpty()) {
@@ -146,7 +147,7 @@ public class AttributesLibClient {
             if (effects.size() == 1 && tooltips.size() >= 2) {
                 MobEffect effect = effects.get(0).getEffect().value();
                 String key = effect.getDescriptionId() + ".desc";
-                if (I18n.exists(key)) {
+                if (Language.getInstance().has(key)) {
                     tooltips.add(2, Component.translatable(key).withStyle(ChatFormatting.DARK_GRAY));
                 }
                 else if (e.getFlags().isAdvanced() && effect.attributeModifiers.isEmpty()) {

@@ -40,6 +40,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextColor;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
@@ -208,7 +209,7 @@ public class AttributesGui implements Renderable, GuiEventListener {
 
             String key = attr.getDescriptionId() + ".desc";
 
-            if (I18n.exists(key)) {
+            if (Language.getInstance().has(key)) {
                 Component txt = Component.translatable(key).withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC);
                 list.add(txt);
             }
@@ -217,7 +218,7 @@ public class AttributesGui implements Renderable, GuiEventListener {
                 list.add(txt);
             }
 
-            int color = getValueColor(inst, ChatFormatting.GRAY.getColor());
+            int color = getValueColor(inst, TextColor.GRAY.getValue());
 
             Component valueComp = attr.toValueComponent(null, inst.getValue(), ApothicAttributes.getTooltipFlag()).withColor(color);
             Component baseComp = attr.toValueComponent(null, inst.getBaseValue(), ApothicAttributes.getTooltipFlag()).withStyle(ChatFormatting.GRAY);
@@ -272,7 +273,7 @@ public class AttributesGui implements Renderable, GuiEventListener {
                         }
                     }
 
-                    color = getValueColor(attr, opValue, baseValue, ChatFormatting.GRAY.getColor());
+                    color = getValueColor(attr, opValue, baseValue, TextColor.GRAY.getValue());
                     Component valueComp2 = attr.toValueComponent(op, opValue, ApothicAttributes.getTooltipFlag()).withStyle(Style.EMPTY.withColor(color));
                     MutableComponent comp = Component.translatable("apothic_attributes.gui." + op.name().toLowerCase(Locale.ROOT), valueComp2).withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC);
 
@@ -355,7 +356,7 @@ public class AttributesGui implements Renderable, GuiEventListener {
             pose.scale(scale, scale);
         }
 
-        int color = getValueColor(inst, ChatFormatting.WHITE.getColor()) | 0xFF000000;
+        int color = getValueColor(inst, TextColor.WHITE.getValue()) | 0xFF000000;
         gfx.text(font, value, (int) ((x + 72 + (27 - this.font.width(value) * scale) / 2) / scale), (int) ((y + 7) / scale), color, true);
         pose.popMatrix();
     }
@@ -475,7 +476,7 @@ public class AttributesGui implements Renderable, GuiEventListener {
             case BLUE -> 0x55DD55;
             case RED -> 0xFF6060;
             case GRAY -> 0xFFFFFF;
-            default -> color.getColor();
+            default -> Objects.requireNonNull(TextColor.fromLegacyFormat(color)).getValue();
         };
     }
 
@@ -539,7 +540,7 @@ public class AttributesGui implements Renderable, GuiEventListener {
      * Colors a string using legacy formatting codes. Terminates the string with {@link ChatFormatting#RESET}.
      */
     private static String colored(String str, ChatFormatting color) {
-        return "" + ChatFormatting.PREFIX_CODE + color.getChar() + str + ChatFormatting.PREFIX_CODE + ChatFormatting.RESET.getChar();
+        return color.toString() + str + ChatFormatting.RESET;
     }
 
     public class HideUnchangedButton extends AbstractButton {

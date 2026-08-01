@@ -26,6 +26,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
@@ -128,7 +129,7 @@ public class ApothicAttributes {
 
     @SubscribeEvent
     public void setup(FMLCommonSetupEvent e) {
-        AttributeSupplier playerAttribs = DefaultAttributes.getSupplier(EntityType.PLAYER);
+        AttributeSupplier playerAttribs = DefaultAttributes.getSupplier(EntityTypes.PLAYER);
         BuiltInRegistries.ATTRIBUTE.listElements().forEach(attr -> {
             if (playerAttribs.hasAttribute(attr)) {
                 attr.value().setSyncable(true);

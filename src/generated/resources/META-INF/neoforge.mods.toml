@@ -8,7 +8,7 @@ license="MIT License"
 
 modId="apothic_attributes"
 
-version="3.0.1"
+version="4.0.0"
 
 displayName="Apothic Attributes"
 
@@ -22,20 +22,20 @@ config="apothic_attributes.mixins.json"
 [[dependencies.apothic_attributes]]
     modId="minecraft"
     type="required"
-    versionRange="[26.1.2,)"
+    versionRange="[26.2,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.apothic_attributes]]
     modId="neoforge"
     type="required"
-    versionRange="[26.1.2.70-beta,)"
+    versionRange="[26.2.0.41-beta,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.apothic_attributes]]
     modId="placebo"
     type="required"
-    versionRange="[10.0.0,)"
+    versionRange="[11.0.0,)"
     ordering="AFTER"
     side="BOTH"
