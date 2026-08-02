@@ -9,3 +9,25 @@ It also includes the Attributes GUI, a way to view the player's current attribut
 ![](https://i.imgur.com/stOm5Tk.png)
 
 In prior versions of the mod, Apothic Attributes also included an entire attribute formatting API, which has since been upstreamed to NeoForge.
+
+## Fork
+
+Unofficial NeoForge 26.2 fork by Apollo1298.
+Original work: Shadows-of-Fire / Stormraven Studios (see LICENSE).
+Upstream: https://github.com/Shadows-of-Fire/Apothic-Attributes
+Branch: `neoforge/26.2`
+
+## Build
+
+```bash
+./gradlew build
+```
+
+## Development
+
+26.2 / Fabric work used Cursor agent assistance.
+
+## License
+
+Code: MIT (upstream copyright retained in LICENSE).
+Assets: see LICENSE_ASSETS (All Rights Reserved).
